@@ -88,10 +88,29 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
             {players.length > 0 && (
                 <>
                 <Text style={styles.displayedPlayer}>Players</Text>
+
                 {players.map((player, index) => (
                     <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
                 ))}
+
                 <Button title="Generate Teams" onPress={generateTeams} />
+                </>
+            )}
+
+            {/* display the two teams generated*/}
+            {team1.length > 0 && team2.length > 0 && (
+                <>
+                    <Text style={styles.displayedPlayer}>Team 1</Text>
+
+                    {team1.map((player, index) => (
+                        <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
+                    ))}
+
+                    <Text style={styles.displayedPlayer}>Team 2</Text>
+
+                    {team2.map((player, index) => (
+                        <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
+                    ))}     
                 </>
             )}
 
