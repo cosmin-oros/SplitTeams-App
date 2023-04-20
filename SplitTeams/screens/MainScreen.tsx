@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
 type MainScreenProps = {
@@ -64,10 +64,74 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
     };
 
     return (
-        <View>
-            <Text>da</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Add Player</Text>
+
+            {/* textfield to add player name */}
+            <TextInput style={styles.playerNameInput}
+                placeholder=" Player Name"
+                value={playerName}
+                onChangeText={(text) => setPlayerName(text)}
+            />
+
+            {/* buttons to choose the position */}
+            <View style={styles.positionButton}>
+                <Button title="Forward" onPress={() => setPlayerPosition('forward')} color={playerPosition === 'forward' ? 'blue' : 'gray'} />
+                <Button title="Midfielder" onPress={() => setPlayerPosition('midfielder')} color={playerPosition === 'midfielder' ? 'blue' : 'gray'} />
+                <Button title="Defender" onPress={() => setPlayerPosition('defender')} color={playerPosition === 'defender' ? 'blue' : 'gray'} />
+                <Button title="Goalkeeper" onPress={() => setPlayerPosition('goalkeeper')} color={playerPosition === 'goalkeeper' ? 'blue' : 'gray'} />
+            </View>
+
+            <Button title="Add Player" onPress={addPlayer} />
+
+            {/* display the players once added and the generate teams button */}
+            {players.length > 0 && (
+                <>
+                <Text style={styles.displayedPlayer}>Players</Text>
+                {players.map((player, index) => (
+                    <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
+                ))}
+                <Button title="Generate Teams" onPress={generateTeams} />
+                </>
+            )}
+
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#082438',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    title: {
+        fontSize: 18, 
+        fontWeight: 'bold', 
+        marginBottom: 8,
+        color: '#ffffff',
+    },
+    playerNameInput: {
+        height: 40, 
+        borderColor: 'gray', 
+        borderWidth: 1, 
+        marginBottom: 8,
+        color: '#ffffff',
+    },
+    positionButton: {
+        flexDirection: 'row', 
+        marginBottom: 8,
+    },
+    displayedPlayer: {
+        fontSize: 18, 
+        fontWeight: 'bold', 
+        marginTop: 8,
+        marginBottom: 8,
+        color: '#ffffff',
+    }
+    
+});
 
 export default MainScreen;
