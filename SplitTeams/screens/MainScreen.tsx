@@ -20,7 +20,7 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
 
     // add a player to the players list
     const addPlayer = () => {
-        if (playerName.trim() !== '') {
+        if (playerName.trim() !== '' && players.length <= 22) {
           const newPlayer: Player = { name: playerName, position: playerPosition };
           setPlayers([...players, newPlayer]);
           setPlayerName('');
@@ -37,7 +37,7 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
           goalkeeper: 1,
         };
     
-        // modify this to split them fairly
+        // randomize the order of the players
         const shuffledPlayers = players.sort(() => Math.random() - 0.5);
     
         const newTeam1: Player[] = [];
@@ -48,6 +48,7 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
             (player) => player.position === position
           );
     
+          // modify this logic to split them fairly
           for (let i = 0; i < count; i++) {
             const playerToAdd = playersForPosition[i];
     
@@ -70,6 +71,7 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
             {/* textfield to add player name */}
             <TextInput style={styles.playerNameInput}
                 placeholder=" Player Name"
+                placeholderTextColor='#ffffff'
                 value={playerName}
                 onChangeText={(text) => setPlayerName(text)}
             />
