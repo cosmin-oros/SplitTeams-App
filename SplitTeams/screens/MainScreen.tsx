@@ -62,6 +62,8 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
     
         setTeam1(newTeam1);
         setTeam2(newTeam2);
+
+        // navigation.navigate('DisplayTeamsScreen', { team1: team1, team2: team2 });
     };
 
     return (
