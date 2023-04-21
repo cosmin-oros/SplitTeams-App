@@ -76,10 +76,21 @@ const MainScreen = ({ navigation } : MainScreenProps) => {
 
             {/* buttons to choose the position */}
             <View style={styles.positionButton}>
-                <Button title="Forward" onPress={() => setPlayerPosition('forward')} color={playerPosition === 'forward' ? 'blue' : 'gray'} />
-                <Button title="Midfielder" onPress={() => setPlayerPosition('midfielder')} color={playerPosition === 'midfielder' ? 'blue' : 'gray'} />
-                <Button title="Defender" onPress={() => setPlayerPosition('defender')} color={playerPosition === 'defender' ? 'blue' : 'gray'} />
-                <Button title="Goalkeeper" onPress={() => setPlayerPosition('goalkeeper')} color={playerPosition === 'goalkeeper' ? 'blue' : 'gray'} />
+                <View style={styles.positionButtonChild}>
+                    <Button title="FWD" onPress={() => setPlayerPosition('forward')} color={playerPosition === 'forward' ? 'blue' : 'gray'} />
+                </View>
+                    
+                <View style={styles.positionButtonChild}>
+                    <Button title="MID" onPress={() => setPlayerPosition('midfielder')} color={playerPosition === 'midfielder' ? 'blue' : 'gray'} />
+                </View>
+
+                <View style={styles.positionButtonChild}>
+                    <Button title="DEF" onPress={() => setPlayerPosition('defender')} color={playerPosition === 'defender' ? 'blue' : 'gray'} />
+                </View>
+
+                <View style={styles.positionButtonChild}>
+                    <Button title="GK" onPress={() => setPlayerPosition('goalkeeper')} color={playerPosition === 'goalkeeper' ? 'blue' : 'gray'} />
+                </View>
             </View>
 
             <Button title="Add Player" onPress={addPlayer} />
@@ -122,35 +133,63 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#082438',
-      width: '100%',
+      padding: 16,
       alignItems: 'center',
       justifyContent: 'center',
     },
     title: {
-        fontSize: 18, 
-        fontWeight: 'bold', 
-        marginBottom: 8,
-        color: '#ffffff',
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 12,
+      color: '#ffffff',
+      textAlign: 'center',
     },
     playerNameInput: {
-        height: 40, 
-        borderColor: 'gray', 
-        borderWidth: 1, 
-        marginBottom: 8,
-        color: '#ffffff',
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      borderRadius: 8,
+      paddingHorizontal: 12,
+      marginBottom: 12,
+      color: '#ffffff',
+      width: '100%',
     },
     positionButton: {
-        flexDirection: 'row', 
-        marginBottom: 8,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 12,
+      width: '100%',
+    },
+    positionButtonChild: {
+      flex: 1,
+      marginHorizontal: 4,
+    },
+    addButton: {
+      width: '100%',
+      marginBottom: 12,
     },
     displayedPlayer: {
-        fontSize: 18, 
-        fontWeight: 'bold', 
-        marginTop: 8,
-        marginBottom: 8,
-        color: '#ffffff',
-    }
-    
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginTop: 8,
+      marginBottom: 8,
+      color: '#ffffff',
+    },
+    teamContainer: {
+      width: '100%',
+      marginBottom: 16,
+    },
+    teamTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 8,
+      color: '#ffffff',
+    },
+    teamPlayer: {
+      fontSize: 16,
+      marginBottom: 4,
+      color: '#ffffff',
+    },
 });
 
 export default MainScreen;
