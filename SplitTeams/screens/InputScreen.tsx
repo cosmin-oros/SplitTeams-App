@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
-type MainScreenProps = {
-    navigation: NavigationProp<ParamListBase, 'MainScreen'>;
+type InputScreenProps = {
+    navigation: NavigationProp<ParamListBase, 'InputScreen'>;
 }
 
 interface Player {
@@ -11,7 +11,7 @@ interface Player {
     position: string;
 }
 
-const MainScreen = ({ navigation } : MainScreenProps) => {
+const InputScreen = ({ navigation } : InputScreenProps) => {
     const [playerName, setPlayerName] = useState<string>('');
     const [playerPosition, setPlayerPosition] = useState<string>('forward');
     const [players, setPlayers] = useState<Player[]>([]);
@@ -196,4 +196,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MainScreen;
+export default InputScreen;
+
