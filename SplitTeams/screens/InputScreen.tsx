@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
 type InputScreenProps = {
@@ -68,7 +68,6 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Add Player</Text>
 
             {/* textfield to add player name */}
             <TextInput style={styles.playerNameInput}
@@ -97,8 +96,11 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
                 </View>
             </View>
 
-            <Button title="Add Player" onPress={addPlayer} />
+            <TouchableOpacity style={styles.addButton} onPress={addPlayer}>
+              <Text style={styles.addButtonText}>Add Player</Text>
+            </TouchableOpacity>
 
+            {/* move these to the displayteamsscreen */}
             {/* display the players once added and the generate teams button */}
             {players.length > 0 && (
                 <>
@@ -108,7 +110,9 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
                     <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
                 ))}
 
-                <Button title="Generate Teams" onPress={generateTeams} />
+                <TouchableOpacity style={styles.button} onPress={generateTeams}>
+                  <Text style={styles.buttonText}>Generate Teams</Text>
+                </TouchableOpacity>
                 </>
             )}
 
@@ -141,11 +145,17 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    content: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginHorizontal: 20,
+    },
     title: {
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 12,
-      color: '#ffffff',
+      color: '#D6D6D6',
       textAlign: 'center',
     },
     playerNameInput: {
@@ -155,7 +165,7 @@ const styles = StyleSheet.create({
       borderRadius: 8,
       paddingHorizontal: 12,
       marginBottom: 12,
-      color: '#ffffff',
+      color: '#D6D6D6',
       width: '100%',
     },
     positionButton: {
@@ -169,15 +179,45 @@ const styles = StyleSheet.create({
       marginHorizontal: 4,
     },
     addButton: {
-      width: '100%',
-      marginBottom: 12,
+      backgroundColor: '#808080',
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderRadius: 10,
+      width: '80%',
+      height: 50,
+      borderWidth: 2,
+      borderColor: '#D6D6D6',
+      marginVertical: 10,
+    },
+    addButtonText: {
+      color: '#D6D6D6',
+      fontWeight: 'bold',
+      fontSize: 18,
+      textAlign: 'center',
+    },
+    button: {
+      backgroundColor: '#008080',
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderRadius: 10,
+      width: '80%',
+      height: 50,
+      borderWidth: 2,
+      borderColor: '#D6D6D6',
+      marginVertical: 10,
+    },
+    buttonText: {
+      color: '#D6D6D6',
+      fontWeight: 'bold',
+      fontSize: 18,
+      textAlign: 'center',
     },
     displayedPlayer: {
-      fontSize: 18,
+      fontSize: 12,
       fontWeight: 'bold',
       marginTop: 8,
       marginBottom: 8,
-      color: '#ffffff',
+      color: '#D6D6D6',
     },
     teamContainer: {
       width: '100%',
@@ -187,12 +227,12 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 8,
-      color: '#ffffff',
+      color: '#D6D6D6',
     },
     teamPlayer: {
       fontSize: 16,
       marginBottom: 4,
-      color: '#ffffff',
+      color: '#D6D6D6',
     },
 });
 
