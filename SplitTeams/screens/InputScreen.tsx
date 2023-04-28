@@ -63,7 +63,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
         setTeam1(newTeam1);
         setTeam2(newTeam2);
 
-        // navigation.navigate('DisplayTeamsScreen', { team1: team1, team2: team2 });
+        navigation.navigate('DisplayTeamsScreen', { team1: team1, team2: team2 });
     };
 
     return (
@@ -104,11 +104,11 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
             {/* display the players once added and the generate teams button */}
             {players.length > 0 && (
                 <>
-                <Text style={styles.displayedPlayer}>Players</Text>
+                {/* <Text style={styles.displayedPlayer}>Players</Text>
 
                 {players.map((player, index) => (
                     <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
-                ))}
+                ))} */}
 
                 <TouchableOpacity style={styles.button} onPress={generateTeams}>
                   <Text style={styles.buttonText}>Generate Teams</Text>
@@ -117,7 +117,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
             )}
 
             {/* display the two teams generated*/}
-            {team1.length > 0 && team2.length > 0 && (
+            {/* {team1.length > 0 && team2.length > 0 && (
                 <>
                     <Text style={styles.displayedPlayer}>Team 1</Text>
 
@@ -131,7 +131,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
                         <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
                     ))}     
                 </>
-            )}
+            )} */}
 
         </View>
     );
@@ -205,6 +205,8 @@ const styles = StyleSheet.create({
       borderWidth: 2,
       borderColor: '#D6D6D6',
       marginVertical: 10,
+      position: 'absolute',
+      bottom: 20,
     },
     buttonText: {
       color: '#D6D6D6',
