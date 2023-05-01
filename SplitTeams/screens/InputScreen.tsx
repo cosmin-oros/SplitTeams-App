@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
 type InputScreenProps = {
@@ -68,32 +68,34 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
 
     return (
         <View style={styles.container}>
+          
+        <Image source={require('../assets/logo_app.png')} style={styles.logo} resizeMode="contain" />
 
             {/* textfield to add player name */}
             <TextInput style={styles.playerNameInput}
                 placeholder=" Player Name"
-                placeholderTextColor='#ffffff'
+                placeholderTextColor='#082438'
                 value={playerName}
                 onChangeText={(text) => setPlayerName(text)}
             />
 
             {/* buttons to choose the position */}
             <View style={styles.positionButton}>
-                <View style={styles.positionButtonChild}>
-                    <Button title="FWD" onPress={() => setPlayerPosition('forward')} color={playerPosition === 'forward' ? 'blue' : 'gray'} />
-                </View>
+                <TouchableOpacity onPress={() => setPlayerPosition('forward')} style={playerPosition === 'forward' ? styles.positionButtonChildPressed : styles.positionButtonChild}>
+                    <Text style={styles.positionButtonChildText}>FWD</Text>
+                </TouchableOpacity>
                     
-                <View style={styles.positionButtonChild}>
-                    <Button title="MID" onPress={() => setPlayerPosition('midfielder')} color={playerPosition === 'midfielder' ? 'blue' : 'gray'} />
-                </View>
+                <TouchableOpacity onPress={() => setPlayerPosition('midfielder')} style={playerPosition === 'midfielder' ? styles.positionButtonChildPressed : styles.positionButtonChild}>
+                  <Text style={styles.positionButtonChildText}>MID</Text>
+                </TouchableOpacity>
 
-                <View style={styles.positionButtonChild}>
-                    <Button title="DEF" onPress={() => setPlayerPosition('defender')} color={playerPosition === 'defender' ? 'blue' : 'gray'} />
-                </View>
+                <TouchableOpacity onPress={() => setPlayerPosition('defender')} style={playerPosition === 'defender' ? styles.positionButtonChildPressed : styles.positionButtonChild}>
+                  <Text style={styles.positionButtonChildText}>DEF</Text>
+                </TouchableOpacity>
 
-                <View style={styles.positionButtonChild}>
-                    <Button title="GK" onPress={() => setPlayerPosition('goalkeeper')} color={playerPosition === 'goalkeeper' ? 'blue' : 'gray'} />
-                </View>
+                <TouchableOpacity onPress={() => setPlayerPosition('goalkeeper')} style={playerPosition === 'goalkeeper' ? styles.positionButtonChildPressed : styles.positionButtonChild}>
+                  <Text style={styles.positionButtonChildText}>GK</Text>
+                </TouchableOpacity>
             </View>
 
             <TouchableOpacity style={styles.addButton} onPress={addPlayer}>
@@ -140,7 +142,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#082438',
+      backgroundColor: '#f5f5f5',
       padding: 16,
       alignItems: 'center',
       justifyContent: 'center',
@@ -155,8 +157,13 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 12,
-      color: '#D6D6D6',
+      color: '#082438',
       textAlign: 'center',
+    },
+    logo: {
+      width: '100%',
+      height: '50%',
+      marginBottom: '10%'
     },
     playerNameInput: {
       height: 40,
@@ -165,7 +172,7 @@ const styles = StyleSheet.create({
       borderRadius: 8,
       paddingHorizontal: 12,
       marginBottom: 12,
-      color: '#D6D6D6',
+      color: '#082438',
       width: '100%',
     },
     positionButton: {
@@ -177,9 +184,23 @@ const styles = StyleSheet.create({
     positionButtonChild: {
       flex: 1,
       marginHorizontal: 4,
+      backgroundColor: 'gray',
+      borderRadius: 5,
+    },
+    positionButtonChildPressed: {
+      flex: 1,
+      marginHorizontal: 4,
+      backgroundColor: '#082438',
+      borderRadius: 5,
+    },
+    positionButtonChildText: {
+      color: '#f5f5f5',
+      fontWeight: 'bold',
+      fontSize: 18,
+      textAlign: 'center',
     },
     addButton: {
-      backgroundColor: '#808080',
+      backgroundColor: '#082438',
       paddingHorizontal: 20,
       paddingVertical: 10,
       borderRadius: 10,
@@ -190,13 +211,13 @@ const styles = StyleSheet.create({
       marginVertical: 10,
     },
     addButtonText: {
-      color: '#D6D6D6',
+      color: '#f5f5f5',
       fontWeight: 'bold',
       fontSize: 18,
       textAlign: 'center',
     },
     button: {
-      backgroundColor: '#008080',
+      backgroundColor: '#082438',
       paddingHorizontal: 20,
       paddingVertical: 10,
       borderRadius: 10,
@@ -209,7 +230,7 @@ const styles = StyleSheet.create({
       bottom: 20,
     },
     buttonText: {
-      color: '#D6D6D6',
+      color: '#f5f5f5',
       fontWeight: 'bold',
       fontSize: 18,
       textAlign: 'center',
@@ -219,7 +240,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginTop: 8,
       marginBottom: 8,
-      color: '#D6D6D6',
+      color: '#f5f5f5',
     },
     teamContainer: {
       width: '100%',
@@ -229,12 +250,12 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 8,
-      color: '#D6D6D6',
+      color: '#f5f5f5',
     },
     teamPlayer: {
       fontSize: 16,
       marginBottom: 4,
-      color: '#D6D6D6',
+      color: '#f5f5f5',
     },
 });
 
