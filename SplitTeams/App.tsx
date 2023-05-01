@@ -12,7 +12,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='WelcomeScreen'>
         <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name='InputScreen' component={InputScreen} options={{headerShown: false}}/>
-        {/* <Stack.Screen name='DisplayTeamsScreen' component={DisplayTeamsScreen} options={{headerShown: false}}/> */}
+        <Stack.Screen name='DisplayTeamsScreen' component={DisplayTeamsScreen} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -3,24 +3,29 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
 interface Player {
-    name: string;
-    position: string;
+  name: string;
+  position: string;
 }
 
-type DisplayTeamsScreenProps = {
-    navigation: NavigationProp<ParamListBase, 'DisplayTeamsScreen'>;
-    team1: Player[];
-    team2: Player[];
-}
+type DisplayScreenProps = {
+  route: {
+    params: {
+      newTeam1: Player[];
+      newTeam2: Player[];
+    };
+  };
+  navigation: NavigationProp<ParamListBase, 'DisplayTeamsScreen'>;
+};
 
-const DisplayTeamsScreen = ({ navigation, team1, team2 } : DisplayTeamsScreenProps) => {
-    
+const DisplayTeamsScreen = ({ route, navigation } : DisplayScreenProps) => {
+  const { newTeam1, newTeam2 } = route.params;
 
-    return (
-        <View>
+
+  return (
+    <View>
             
-        </View>
-    );
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
