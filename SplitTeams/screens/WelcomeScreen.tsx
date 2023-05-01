@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
 type WelcomeScreenProps = {
@@ -13,7 +13,9 @@ const WelcomeScreen = ({ navigation } : WelcomeScreenProps) => {
 
   return(
     <View style={styles.container}>
+      <Image source={require('../assets/logo_app.png')} style={styles.logo} resizeMode="contain" />
       <View style={styles.content}>
+        
         <Text style={styles.title}>Welcome to the SplitTeams App</Text>
         <Text style={styles.subtitle}>Input player names and their positions and the app will split them fairly into two teams and assign one captain for each team</Text>
       </View>
@@ -26,7 +28,7 @@ const WelcomeScreen = ({ navigation } : WelcomeScreenProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#082438',
+    backgroundColor: '#f5f5f5',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -38,32 +40,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 20,
   },
+  logo: {
+    width: '100%',
+    height: '40%'
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 10,
     padding: 10,
-    color: '#D6D6D6',
+    color: '#082438',
   },
   subtitle: {
     fontSize: 16,
     textAlign: 'center',
     padding: 10,
-    marginBottom: 30,
-    color: '#fff',
+    marginBottom: '70%',
+    color: '#082438',
   },
   button: {
-    backgroundColor: '#008080',
+    backgroundColor: '#082438',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,
     width: '80%',
     height: 50,
     borderWidth: 2,
-    borderColor: '#D6D6D6',
+    borderColor: '#f5f5f5',
   },
   buttonText: {
-    color: '#D6D6D6',
+    color: '#f5f5f5',
     fontWeight: 'bold',
     fontSize: 18,
     textAlign: 'center',
