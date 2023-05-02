@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
+import { RouteParams } from '../routes/types';
+import { Routes } from '../routes/routes';
 
 type InputScreenProps = {
     navigation: NavigationProp<ParamListBase, 'InputScreen'>;
@@ -69,7 +71,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
         setTeam1(newTeam1);
         setTeam2(newTeam2);
 
-        navigation.navigate('DisplayTeamsScreen', { newTeam1, newTeam2 });
+        navigation.navigate(Routes.Display, { newTeam1, newTeam2 });
     };
 
     return (

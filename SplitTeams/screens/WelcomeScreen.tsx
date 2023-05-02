@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
+import { RouteParams } from '../routes/types';
+import { Routes } from '../routes/routes';
 
 type WelcomeScreenProps = {
   navigation: NavigationProp<ParamListBase, 'InputScreen'>;
@@ -8,7 +10,7 @@ type WelcomeScreenProps = {
 
 const WelcomeScreen = ({ navigation } : WelcomeScreenProps) => {
   const handleContinue = () => {
-    navigation.navigate('InputScreen');
+    navigation.navigate(Routes.Input);
   }
 
   return(
