@@ -28,6 +28,12 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
         }
     };
 
+    const reset = () => {
+      setPlayers([]);
+      setPlayerName('');
+      setPlayerPosition('forward');
+    }
+
     // function to generate the teams in a fair way
     const generateTeams = () => {
         const positions = {
@@ -98,9 +104,14 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.addButton} onPress={addPlayer}>
-              <Text style={styles.addButtonText}>Add Player</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonsContainer}>
+              <TouchableOpacity style={styles.addButton} onPress={addPlayer}>
+                <Text style={styles.addButtonText}>Add Player</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.addButton} onPress={reset}>
+                <Text style={styles.addButtonText}>Reset</Text>
+              </TouchableOpacity>
+            </View>
 
             {/* move these to the displayteamsscreen */}
             {/* display the players once added and the generate teams button */}
@@ -199,12 +210,15 @@ const styles = StyleSheet.create({
       fontSize: 18,
       textAlign: 'center',
     },
+    buttonsContainer: {
+      flexDirection: 'row',
+    },
     addButton: {
       backgroundColor: '#082438',
       paddingHorizontal: 20,
       paddingVertical: 10,
       borderRadius: 10,
-      width: '80%',
+      width: '50%',
       height: 50,
       borderWidth: 2,
       borderColor: '#D6D6D6',
@@ -240,7 +254,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginTop: 8,
       marginBottom: 8,
-      color: '#f5f5f5',
+      color: '#082438',
     },
     teamContainer: {
       width: '100%',
@@ -260,4 +274,3 @@ const styles = StyleSheet.create({
 });
 
 export default InputScreen;
-
