@@ -5,7 +5,7 @@ import { RouteParams } from '../routes/types';
 import { Routes } from '../routes/routes';
 
 type WelcomeScreenProps = {
-  navigation: NavigationProp<ParamListBase, 'InputScreen'>;
+  navigation: NavigationProp<ParamListBase, Routes.Welcome>;
 }
 
 const WelcomeScreen = ({ navigation } : WelcomeScreenProps) => {

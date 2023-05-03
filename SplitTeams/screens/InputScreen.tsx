@@ -5,7 +5,7 @@ import { RouteParams } from '../routes/types';
 import { Routes } from '../routes/routes';
 
 type InputScreenProps = {
-    navigation: NavigationProp<ParamListBase, 'InputScreen'>;
+    navigation: NavigationProp<ParamListBase, Routes.Input>;
 }
 
 interface Player {
@@ -71,7 +71,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
         setTeam1(newTeam1);
         setTeam2(newTeam2);
 
-        navigation.navigate(Routes.Display, { newTeam1, newTeam2 });
+        navigation.navigate(Routes.Display, { newTeam1: newTeam1, newTeam2: newTeam2 });
     };
 
     return (

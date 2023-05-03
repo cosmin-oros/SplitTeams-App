@@ -14,7 +14,7 @@ export default function App() {
       <Stack.Navigator initialRouteName={Routes.Welcome}>
         <Stack.Screen name={Routes.Welcome} component={WelcomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name={Routes.Input} component={InputScreen} options={{headerShown: false}}/>
-        {/* <Stack.Screen name={Routes.Display} component={DisplayTeamsScreen} options={{headerShown: false}}/> */}
+        <Stack.Screen name={Routes.Display} component={DisplayTeamsScreen} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
