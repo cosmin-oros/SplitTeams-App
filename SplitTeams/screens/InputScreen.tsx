@@ -117,7 +117,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
 
             {/* move these to the displayteamsscreen */}
             {/* display the players once added and the generate teams button */}
-            {players.length > 0 && (
+            {players.length > 1 && (
                 <>
                 {/* <Text style={styles.displayedPlayer}>Players</Text>
 
@@ -130,23 +130,6 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
                 </TouchableOpacity>
                 </>
             )}
-
-            {/* display the two teams generated*/}
-            {/* {team1.length > 0 && team2.length > 0 && (
-                <>
-                    <Text style={styles.displayedPlayer}>Team 1</Text>
-
-                    {team1.map((player, index) => (
-                        <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
-                    ))}
-
-                    <Text style={styles.displayedPlayer}>Team 2</Text>
-
-                    {team2.map((player, index) => (
-                        <Text style={styles.displayedPlayer} key={index}>{player.name} ({player.position})</Text>
-                    ))}     
-                </>
-            )} */}
 
         </View>
     );
