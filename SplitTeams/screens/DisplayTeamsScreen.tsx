@@ -16,6 +16,8 @@ type DisplayTeamsScreenProps = NativeStackScreenProps<RouteParams, Routes.Displa
 
 const DisplayTeamsScreen: React.FC<DisplayTeamsScreenProps> = ({ route }: DisplayTeamsScreenProps) => {
   const { newTeam1, newTeam2 } = route.params;
+  console.log('newTeam1:', newTeam1);
+  console.log('newTeam2:', newTeam2);
 
   const handleRestart = () => {
     
@@ -25,7 +27,7 @@ const DisplayTeamsScreen: React.FC<DisplayTeamsScreenProps> = ({ route }: Displa
     <View style={styles.container}>
       <View style={styles.teamContainer}>
         <Text style={styles.teamTitle}>Team 1</Text>
-        {newTeam1.map((player: Player, index: number) => (
+        {newTeam1 && newTeam1.map((player: Player, index: number) => (
           <Text key={index} style={styles.teamPlayer}>
             {player.name} ({player.position})
           </Text>
@@ -34,12 +36,13 @@ const DisplayTeamsScreen: React.FC<DisplayTeamsScreenProps> = ({ route }: Displa
 
       <View style={styles.teamContainer}>
         <Text style={styles.teamTitle}>Team 2</Text>
-        {newTeam2.map((player: Player, index: number) => (
+        {newTeam2 && newTeam2.map((player: Player, index: number) => (
           <Text key={index} style={styles.teamPlayer}>
             {player.name} ({player.position})
           </Text>
         ))}
       </View>
+
 
       <Button title="Restart" onPress={handleRestart} />
     </View>

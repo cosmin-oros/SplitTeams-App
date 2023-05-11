@@ -17,8 +17,8 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
     const [playerName, setPlayerName] = useState<string>('');
     const [playerPosition, setPlayerPosition] = useState<string>('forward');
     const [players, setPlayers] = useState<Player[]>([]);
-    const [team1, setTeam1] = useState<Player[]>([]);
-    const [team2, setTeam2] = useState<Player[]>([]);
+    // const [team1, setTeam1] = useState<Player[]>([]);
+    // const [team2, setTeam2] = useState<Player[]>([]);
 
     // add a player to the players list
     const addPlayer = () => {
@@ -38,40 +38,64 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
 
     // function to generate the teams in a fair way
     const generateTeams = () => {
-        const positions = {
-          forward: 3,
-          midfielder: 3,
-          defender: 4,
-          goalkeeper: 1,
-        };
-    
-        // randomize the order of the players
-        const shuffledPlayers = players.sort(() => Math.random() - 0.5);
-    
-        const newTeam1: Player[] = [];
-        const newTeam2: Player[] = [];
-    
-        for (const [position, count] of Object.entries(positions)) {
-          const playersForPosition = shuffledPlayers.filter(
-            (player) => player.position === position
-          );
-    
-          // modify this logic to split them fairly
-          for (let i = 0; i < count; i++) {
-            const playerToAdd = playersForPosition[i];
-    
-            if (i % 2 === 0) {
-              newTeam1.push(playerToAdd);
-            } else {
-              newTeam2.push(playerToAdd);
+        const gks = players.filter((player) => player.position == 'goalkeeper');
+        const defs = players.filter((player) => player.position == 'defender');
+        const mids = players.filter((player) => player.position =='midfielder');
+        const fws = players.filter((player) => player.position == 'forward'); 
+
+        const team1: Player[] = [];
+        const team2: Player[] = [];
+
+        while (gks.length > 0) {
+          team1.push(gks.shift()!);
+          if (gks.length > 0) {
+            team2.push(gks.shift()!);
+          }
+        }
+
+        while (defs.length > 0) {
+          if (team1.length > team2.length) {
+            team2.push(defs.shift()!);
+            if (defs.length > 0) {
+              team1.push(defs.shift()!);
+            }
+          } else {
+            team1.push(defs.shift()!);
+            if (defs.length > 0) {
+              team2.push(defs.shift()!);
             }
           }
         }
-    
-        setTeam1(newTeam1);
-        setTeam2(newTeam2);
 
-        navigation.navigate(Routes.Display, { newTeam1: newTeam1, newTeam2: newTeam2 });
+        while (mids.length > 0) {
+          if (team1.length > team2.length) {
+            team2.push(mids.shift()!);
+            if (mids.length > 0) {
+              team1.push(mids.shift()!);
+            }
+          } else {
+            team1.push(mids.shift()!);
+            if (mids.length > 0) {
+              team2.push(mids.shift()!);
+            }
+          }
+        }
+
+        while (fws.length > 0) {
+          if (team1.length > team2.length) {
+            team2.push(fws.shift()!);
+            if (fws.length > 0) {
+              team1.push(fws.shift()!);
+            }
+          } else {
+            team1.push(fws.shift()!);
+            if (fws.length > 0) {
+              team2.push(fws.shift()!);
+            }
+          }
+        }
+
+        navigation.navigate(Routes.Display, { newTeam1: team1, newTeam2: team2 });
     };
 
     return (
