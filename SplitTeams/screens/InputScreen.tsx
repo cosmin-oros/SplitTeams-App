@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 import { RouteParams } from '../routes/types';
 import { Routes } from '../routes/routes';
@@ -42,6 +42,19 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
         const defs = players.filter((player) => player.position == 'defender');
         const mids = players.filter((player) => player.position =='midfielder');
         const fws = players.filter((player) => player.position == 'forward'); 
+
+        const shuffleArray = (array: Player[]) => {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        }
+      
+        shuffleArray(gks);
+        shuffleArray(defs);
+        shuffleArray(mids);
+        shuffleArray(fws);
 
         const team1: Player[] = [];
         const team2: Player[] = [];
