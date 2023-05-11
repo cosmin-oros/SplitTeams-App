@@ -27,22 +27,24 @@ const DisplayTeamsScreen: React.FC<DisplayTeamsScreenProps> = ({ route }: Displa
 
   return (
     <View style={styles.container}>
-      <View style={styles.teamContainer}>
-        <Text style={styles.teamTitle1}>Team 1</Text>
-        {newTeam1 && newTeam1.map((player: Player, index: number) => (
-          <Text key={index} style={styles.teamPlayer1}>
-            {player.name} ({player.position})
-          </Text>
-        ))}
-      </View>
+      <View style={styles.teamsContainer}>
+        <View style={styles.teamContainer}>
+          <Text style={styles.teamTitle1}>Team 1</Text>
+          {newTeam1 && newTeam1.map((player: Player, index: number) => (
+            <Text key={index} style={styles.teamPlayer1}>
+              {player.name} ({player.position})
+            </Text>
+          ))}
+        </View>
 
-      <View style={styles.teamContainer}>
-        <Text style={styles.teamTitle2}>Team 2</Text>
-        {newTeam2 && newTeam2.map((player: Player, index: number) => (
-          <Text key={index} style={styles.teamPlayer2}>
-            {player.name} ({player.position})
-          </Text>
-        ))}
+        <View style={styles.teamContainer}>
+          <Text style={styles.teamTitle2}>Team 2</Text>
+          {newTeam2 && newTeam2.map((player: Player, index: number) => (
+            <Text key={index} style={styles.teamPlayer2}>
+              {player.name} ({player.position})
+            </Text>
+          ))}
+        </View>
       </View>
 
 
@@ -61,30 +63,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  teamsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: '25%',
+    paddingVertical: 8,
+  },
   teamContainer: {
     width: '100%',
     marginBottom: 16,
   },
   teamTitle1: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
     color: '#082438',
   },
   teamPlayer1: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 4,
     color: 'red',
   },
   teamTitle2: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
     color: '#082438',
   },
   teamPlayer2: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 4,
     color: 'blue',
