@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 import { RouteParams } from '../routes/types';
 import { Routes } from '../routes/routes';
@@ -112,7 +112,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
     };
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
           
         <Image source={require('../assets/logo_app.png')} style={styles.logo} resizeMode="contain" />
 
@@ -168,7 +168,7 @@ const InputScreen = ({ navigation } : InputScreenProps) => {
                 </>
             )}
 
-        </View>
+        </ScrollView>
     );
 };
 
@@ -196,7 +196,6 @@ const styles = StyleSheet.create({
     logo: {
       width: '100%',
       height: '50%',
-      marginBottom: '10%'
     },
     playerNameInput: {
       height: 40,
@@ -261,9 +260,9 @@ const styles = StyleSheet.create({
       height: 50,
       borderWidth: 2,
       borderColor: '#D6D6D6',
-      marginVertical: 10,
+      marginTop: 10,
       position: 'absolute',
-      bottom: 20,
+      bottom: 1,
     },
     buttonText: {
       color: '#f5f5f5',

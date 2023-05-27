@@ -4,6 +4,7 @@ import { useNavigation, RouteProp } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RouteParams } from '../routes/types';
 import { Routes } from '../routes/routes';
+import { CommonActions } from '@react-navigation/native';
 
 interface Player {
   name: string;
@@ -22,7 +23,11 @@ const DisplayTeamsScreen: React.FC<DisplayTeamsScreenProps> = ({ route }: Displa
   const navigation = useNavigation();
 
   const handleRestart = () => {
-    // navigation.navigate(Routes.Input);
+    const reset = CommonActions.reset({
+      index: 0,
+      routes: [{name: Routes.Welcome}],
+    });
+    navigation.dispatch(reset);
   };
 
   return (
